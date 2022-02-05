@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Set;
 
 @Service
-public class RoleServiceImpl implements RoleService{
+public class RoleServiceImpl implements RoleService {
 
     private RoleDao roleDao;
 
@@ -17,17 +17,14 @@ public class RoleServiceImpl implements RoleService{
         this.roleDao = roleDao;
     }
 
-    @Transactional
     public List<Role> allRoles() {
         return roleDao.allRoles();
     }
 
     @Transactional
-    public void saveRole(Role role) { roleDao.saveRole(role);}
+    public void saveRole(Role role) { roleDao.saveRole(role); }
 
-    @Transactional
-    public Role getRole(Long id) {return roleDao.getRole(id);}
-
+    public Role getRole(Long id) { return roleDao.getRole(id); }
 
     public Set<Role> setRole(Long index) {
         return roleDao.setRole(index);

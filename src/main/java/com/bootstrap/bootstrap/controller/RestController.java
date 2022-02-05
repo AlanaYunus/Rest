@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @org.springframework.web.bind.annotation.RestController
-@RequestMapping(value = "/")
+@RequestMapping(value = "/api/admin")
 public class RestController {
 
     private UserService service;
@@ -18,29 +18,29 @@ public class RestController {
         this.service = service;
     }
 
-    @GetMapping("/api/admin")
+    @GetMapping("")
     public List<User> getAllUsers() {
         return service.allUsers();
     }
 
-    @GetMapping("/api/admin/{id}")
+    @GetMapping("/{id}")
     public User getOneUser(@PathVariable("id") Long id) {
         return service.readUser(id);
     }
 
-    @PostMapping("/api/admin")
+    @PostMapping("")
     public ResponseEntity<User> save(@RequestBody User user) {
         service.createUser(user);
         return new ResponseEntity<User>(service.getUserByName(user.getName()), HttpStatus.OK);
     }
 
-    @PutMapping("/api/admin")
+    @PutMapping("")
     public ResponseEntity<User> changeUser(@RequestBody User user) {
         service.updateUser(user);
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
-    @DeleteMapping("/api/admin/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<User> changeUser(@PathVariable("id") Long id) {
         service.deleteUser(id);
         return new ResponseEntity<>(HttpStatus.OK);

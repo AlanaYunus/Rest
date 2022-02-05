@@ -11,18 +11,15 @@ import java.util.List;
 @Service
 public class UserServiceImpl implements UserService {
 
-   private UserDao userDao;
+    private UserDao userDao;
 
-   public UserServiceImpl(UserDao userDao) {
+    public UserServiceImpl(UserDao userDao) {
         this.userDao = userDao;
     }
 
     @Transactional
-    public void createUser(User user) {
-        userDao.createUser(user);
-    }
+    public void createUser(User user) { userDao.createUser(user); }
 
-    @Transactional
     public User readUser(Long id) {
         return userDao.readUser(id);
     }
@@ -37,17 +34,14 @@ public class UserServiceImpl implements UserService {
         userDao.deleteUser(id);
     }
 
-    @Transactional
     public User getUserByName(String name) {
         return userDao.getUserByName(name);
     }
 
-    @Transactional
     public List<User> allUsers() {
         return userDao.allUsers();
     }
 
-    @Transactional
     public boolean isAllowed(Long id, Principal principal) {
         return userDao.isAllowed(id, principal);
     }
